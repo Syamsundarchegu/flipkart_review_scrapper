@@ -9,7 +9,7 @@ from pymongo.mongo_client import MongoClient
 
 
 
-uri = "mongodb+srv://pwskills:pwskills@cluster0.gmusdjr.mongodb.net/?retryWrites=true&w=majority"
+uri = "mongodb+srv://<username>:<password>@cluster0.gmusdjr.mongodb.net/?retryWrites=true&w=majority"
 client = MongoClient(uri)
 try:
     client.admin.command('ping')
