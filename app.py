@@ -4,18 +4,20 @@ from bs4 import BeautifulSoup
 import logging
 import urllib.request
 
-# MongoDB Database Connection
-# from pymongo.mongo_client import MongoClient
+MongoDB Database Connection
+
+
+from pymongo.mongo_client import MongoClient
 
 
 
-# uri = "mongodb+srv://<username>:<password>@cluster0.gmusdjr.mongodb.net/?retryWrites=true&w=majority"
-# client = MongoClient(uri)
-# try:
-#     client.admin.command('ping')
-#     print("Pinged your deployment. You successfully connected to MongoDB!")
-# except Exception as e:
-#     print(e)
+uri = "mongodb+srv://<username>:<password>@cluster0.gmusdjr.mongodb.net/?retryWrites=true&w=majority"
+client = MongoClient(uri)
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
 # my_mongo_db = client['webscrapper_api']
 # my_collection = my_mongo_db['product_reviews_data']
 logging.basicConfig(filename="web_scrapper.log", level=logging.INFO, format="%(asctime)s")
@@ -63,7 +65,7 @@ def result():
                 
             if reviews:
                 logging.info(reviews)
-                # my_collection.insert_many(reviews)
+                my_collection.insert_many(reviews)
                 return render_template('result.html', reviews=reviews)
             else:
                 return "No Reviews Found"   
@@ -73,5 +75,5 @@ def result():
         return render_template('home.html')
 
 
-# if __name__ == "__main__":
-#     app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
